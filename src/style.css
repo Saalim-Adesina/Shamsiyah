@@ -18,6 +18,11 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     background-color: var(--bg-light);
+    cursor: none; /* Hide default cursor */
+}
+
+a, button, input, textarea, select {
+    cursor: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -814,4 +819,34 @@ footer {
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* Custom Cursor */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    mix-blend-mode: difference;
 }
