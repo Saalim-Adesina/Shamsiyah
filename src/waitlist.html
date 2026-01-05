@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Waitlist - Shamsiyah</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html"><img src="../images/coloredlogo.svg" alt="Shamsiyah Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="mission.html">MISSION</a></li>
+                    <li><a href="waitlist.html">PRE-ORDER</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Waitlist Section -->
+        <section class="waitlist-section waitlist-page">
+            <div class="container">
+                <div class="waitlist-wrapper">
+                    <div class="waitlist-left">
+                        <span class="waitlist-label">CONTACT US</span>
+                        <h2>JOIN THE WAITLIST TODAY</h2>
+                        <span class="waitlist-label">OUR MISSION</span>
+                        
+                        <div class="waitlist-info">
+                            <div class="info-item">
+                                <span class="info-label">Location</span>
+                                <p class="info-text">Doha, Qatar</p>
+                            </div>
+                            <div class="waitlist-social">
+                                <a href="https://www.instagram.com/shamsiya.qa?igsh=MTVsNTh6NXNveDVmdA==" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="waitlist-right">
+                        <form id="waitlistForm" class="waitlist-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="useCase">Category</label>
+                                <select id="useCase" name="useCase" required>
+                                    <option value="">Select an option</option>
+                                    <option value="Residential House">Residential House</option>
+                                    <option value="Commercial Property">Commercial Property</option>
+                                    <option value="Event Venue">Event Venue</option>
+                                    <option value="Hospitality">Hospitality</option>
+                                    <option value="Real Estate">Real Estate</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">SUBMIT</button>
+                            <div id="formMessage" class="form-message"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
