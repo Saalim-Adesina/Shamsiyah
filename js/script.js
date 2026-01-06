@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Hamburger Menu Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+        
+        // Close menu when a link is clicked
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+    }
+
     const cursorDot = document.createElement('div');
     cursorDot.className = 'cursor-dot';
     
@@ -43,14 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Sticky Navbar with Logo Change
     const header = document.querySelector('header');
     const logo = document.querySelector('.logo img');
+    const isHomePage = document.body.classList.contains('home-page');
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             header.classList.add('scrolled');
-            logo.src = '../images/coloredlogo.svg';
+            // Only change logo on home page
+            if (isHomePage) {
+                logo.src = '../images/coloredlogo.svg';
+            }
         } else {
             header.classList.remove('scrolled');
-            logo.src = '../images/whitelogo.svg';
+            // Only revert logo on home page
+            if (isHomePage) {
+                logo.src = '../images/whitelogo.svg';
+            }
         }
     });
 
@@ -115,6 +142,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Timeline item click navigation
     timelineItems.forEach((item, index) => {
         item.addEventListener('click', () => {
+            showItem(index);
+            resetAutoScroll();
+        });
+    });
+
+    // Make images clickable to show corresponding text
+    hiwImages.forEach((img, index) => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
             showItem(index);
             resetAutoScroll();
         });

@@ -8,6 +8,7 @@
     
     /* Font Sizes - Edit here for site-wide changes */
     --fs-h1: 64px;
+    --fs-h1-mobile: 45px;
     --fs-h2: 51.4px;
     --fs-h3: 30px;
     --fs-h4: 20px;
@@ -18,7 +19,7 @@
     --fs-large: 20px;
     --fs-xlarge: 30px;
     --fs-xxlarge: 51.4px;
-    --fs-hero: 51.4px;
+    --fs-hero: 45px;
     --fs-icon: 51.4px;
 }
 
@@ -28,12 +29,17 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-dark);
     line-height: 1.6;
     background-color: var(--bg-light);
     cursor: none; /* Hide default cursor */
+    overflow-x: hidden;
 }
 
 a, button, input, textarea, select {
@@ -141,6 +147,56 @@ nav a:hover {
     opacity: 0.8;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-light);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Hamburger color on scrolled header */
+header.scrolled .hamburger span {
+    background-color: #333;
+}
+
+/* Hamburger always black on non-hero pages */
+.mission-page .hamburger span,
+.waitlist-page .hamburger span {
+    background-color: #333;
+}
+
+/* Navbar text always black on non-hero pages */
+.mission-page nav a,
+.waitlist-page nav a {
+    color: #333;
+}
+
+.mission-page nav a:hover,
+.waitlist-page nav a:hover {
+    color: #333;
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -232,6 +288,7 @@ nav a:hover {
 .problem-section {
     padding: 100px 0;
     background-color: var(--bg-light);
+    overflow-x: hidden;
 }
 
 .problem-container {
@@ -304,6 +361,7 @@ nav a:hover {
     padding: 80px 0;
     background-color: #e8e8e8;
     text-align: center;
+    overflow-x: hidden;
 }
 
 .solution-header {
@@ -388,6 +446,7 @@ nav a:hover {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    overflow-x: hidden;
 }
 
 .how-it-works-header {
@@ -573,6 +632,7 @@ nav a:hover {
     padding: 80px 0;
     background-color: #f7f7f7;
     color: #000;
+    overflow-x: hidden;
 }
 
 .fit-container {
@@ -885,6 +945,7 @@ nav a:hover {
     padding: 80px 0;
     background-color: #f5f5f5;
     text-align: left;
+    overflow-x: hidden;
 }
 
 .section-desc {
@@ -1172,19 +1233,21 @@ nav a:hover {
     padding: 100px 0;
     background: #fff;
     color: #000;
+    overflow-x: hidden;
 }
 
 .waitlist-page {
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh);
     display: flex;
     align-items: center;
-    padding-top: 140px;
+    justify-content: center;
 }
 
 .waitlist-wrapper {
     display: flex;
     gap: 80px;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .waitlist-left {
@@ -1192,6 +1255,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     gap: 25px;
+    min-width: 0;
 }
 
 .waitlist-label {
@@ -1259,6 +1323,7 @@ nav a:hover {
 
 .waitlist-right {
     flex: 1;
+    min-width: 0;
 }
 
 .waitlist-form {
@@ -1355,16 +1420,18 @@ nav a:hover {
 .mission-hero {
     padding: 140px 0 80px;
     background: #fff;
+    overflow-x: hidden;
 }
 
 .mission-hero-content {
     display: flex;
     gap: 80px;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .mission-hero-left {
     flex: 1;
+    width: 100%;
 }
 
 .mission-hero-left .section-label {
@@ -1378,12 +1445,12 @@ nav a:hover {
 }
 
 .mission-hero-left h1 {
-    font-family: 'Syne', sans-serif;
     font-size: var(--fs-h2);
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 25px;
     letter-spacing: -2px;
+    text-align: left;
 }
 
 .mission-hero-left p {
@@ -1419,6 +1486,7 @@ nav a:hover {
 .team-section {
     padding: 80px 0;
     background: #e0e0e0;
+    overflow-x: hidden;
 }
 
 .team-header {
@@ -1492,6 +1560,7 @@ nav a:hover {
     background-position: bottom;
     color: #fff;
     text-align: center;
+    overflow-x: hidden;
 }
 
 .mission-cta-content {
@@ -1556,12 +1625,15 @@ nav a:hover {
 footer {
     background-color: var(--primary-red);
     color: #cbcbcb;
-    padding: 0;
+    padding: 20px 0;
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .footer-bar {
     text-align: center;
-    padding: 0px 0;
+    padding: 0 20px;
 }
 
 .footer-bar p {
@@ -1635,4 +1707,219 @@ footer {
     pointer-events: none;
     z-index: 9998;
     transition: width 0.2s, height 0.2s;
+}
+
+/* MOBILE RESPONSIVE STYLES */
+@media (max-width: 768px) {
+    /* Header Mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffffd1;
+        flex-direction: column;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        z-index: 999;
+    }
+
+    nav.active {
+        max-height: 300px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+    }
+
+    nav a {
+        color: #333;
+        padding: 12px 0;
+        display: block;
+    }
+
+    header.scrolled nav a {
+        color: #333;
+    }
+
+    /* Hero Section Mobile */
+    .hero-content h1 {
+        font-size: var(--fs-h1-mobile);
+    }
+
+    /* Problem Section Mobile */
+    .problem-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .problem-content {
+        flex: 1;
+    }
+
+    .problem-image {
+        flex: 1;
+    }
+
+    .image-wrapper {
+        width: 300px;
+        max-width: 100%;
+    }
+
+    .image-bg-shape {
+        top: -15px;
+        right: -15px;
+        width: 120px;
+        height: 120px;
+        transform: translateX(-10px) translateY(-10px);
+    }
+
+    /* Solution Features Grid Mobile */
+    .solution-features-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 30px;
+    }
+
+    /* How It Works Mobile */
+    .how-it-works-container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .nav-arrow {
+        display: none;
+    }
+
+    .how-it-works-image {
+        width: 100%;
+        order: 2;
+    }
+
+    .how-it-works-timeline {
+        width: 100%;
+        order: 1;
+        flex-direction: column;
+    }
+
+    .how-it-works-timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        padding: 15px 0;
+    }
+
+    /* Fit For You Section Mobile */
+    .fit-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .fit-row.reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .fit-image {
+        max-width: 100%;
+        justify-self: center;
+    }
+
+    .fit-row.reverse .fit-image {
+        justify-self: center;
+    }
+
+    .fit-image .blob {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* Applications Section Mobile */
+    .app-content-box {
+        transform: translateY(-10%);
+        bottom: auto;
+        left: 0;
+        right: 0;
+        margin: 0 10px;
+        padding: 30px;
+        width: auto;
+    }
+
+    .app-image-large img {
+        height: 250px;
+    }
+
+    /* Mission Page Mobile */
+    .mission-hero-content {
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .mission-hero-left h1 {
+        font-size: var(--fs-h1-mobile);
+        text-align: left;
+    }
+
+    .mission-images {
+        align-items: center;
+    }
+
+    .mission-img:nth-child(2) {
+        margin-right: 0;
+    }
+
+    /* Mission CTA Mobile */
+    .mission-cta .btn-primary {
+        padding: 10px 30px;
+    }
+
+    /* Waitlist Page Mobile */
+    .waitlist-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .waitlist-left {
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .waitlist-left h2 {
+        font-size: var(--fs-h1-mobile);
+    }
+
+    .waitlist-right {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .waitlist-form {
+        gap: 20px;
+    }
+
+    /* Team Grid Mobile */
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
