@@ -1,3 +1,4 @@
+
 // Google Apps Script for handling Shamsiyah Waitlist Form
 // To use this:
 // 1. Go to https://script.google.com
@@ -7,14 +8,14 @@
 // 5. Deploy as Web App (Execute as: Me, Who has access: Anyone)
 // 6. Copy the deployment URL and replace 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE' in script.js
 
-const SHEET_ID = '0'; // Replace with your Sheet ID from the URL
+const SPREADSHEET_ID = '1346276902'; // Replace with your Sheet ID
 const SHEET_NAME = 'Waitlist';
 
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     
-    const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
+    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(SHEET_NAME);
     
     // Add headers if they don't exist
     if (sheet.getLastRow() === 0) {
@@ -58,4 +59,7 @@ function testPost() {
   });
   
   Logger.log(result);
+  Logger.log('positive test result')
 }
+
+testPost()
