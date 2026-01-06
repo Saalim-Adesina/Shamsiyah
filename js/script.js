@@ -161,61 +161,21 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoScroll();
     }
 
-    // Waitlist Form Handling
+    // Waitlist Form Handling with FormSubmit
     const waitlistForm = document.getElementById('waitlistForm');
     if (waitlistForm) {
-        waitlistForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                useCase: document.getElementById('useCase').value,
-                timestamp: new Date().toLocaleString()
-            };
-
+        waitlistForm.addEventListener('submit', (e) => {
+            // Show success message
             const messageEl = document.getElementById('formMessage');
-            const submitBtn = waitlistForm.querySelector('button[type="submit"]');
+            messageEl.textContent = '✓ Thank you! Your submission has been received. Redirecting...';
+            messageEl.className = 'form-message success';
+            messageEl.style.display = 'block';
             
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'SUBMITTING...';
-            
-            try {
-                // Use Vercel API endpoint (secure proxy to Google Apps Script)
-                const response = await fetch('/api/submit-waitlist', {
-                    method: 'POST',
-                    body: JSON.stringify(formData),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    messageEl.textContent = '✓ Successfully joined the waitlist!';
-                    messageEl.className = 'form-message success';
-                    messageEl.style.display = 'block';
-                    waitlistForm.reset();
-                    
-                    setTimeout(() => {
-                        messageEl.style.display = 'none';
-                        messageEl.className = 'form-message';
-                    }, 5000);
-                } else {
-                    throw new Error(result.message || 'Submission failed');
-                }
-            } catch (error) {
-                messageEl.textContent = '✗ Error joining waitlist. Please try again.';
-                messageEl.className = 'form-message error';
-                messageEl.style.display = 'block';
-                console.error('Error:', error);
-            } finally {
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'SUBMIT';
-            }
+            // Redirect after 2 seconds
+            setTimeout(() => {
+                window.location.href = '/index.html';
+            }, 2000);
         });
     }
+
 });
