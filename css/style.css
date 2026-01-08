@@ -19,7 +19,7 @@
     --fs-large: 20px;
     --fs-xlarge: 30px;
     --fs-xxlarge: 51.4px;
-    --fs-hero: 45px;
+    --fs-hero: clamp(3rem, 3.5vw, 4vw);
     --fs-icon: 51.4px;
 }
 
@@ -249,7 +249,7 @@ header.scrolled .hamburger span {
     display: inline-block;
     background-color: var(--primary-red);
     color: var(--text-light);
-    padding: 18px 40px;
+    padding: 18px 20px;
     font-size: var(--fs-body);
     font-weight: 700;
     text-transform: uppercase;
@@ -1578,11 +1578,12 @@ header.scrolled .hamburger span {
 }
 
 .mission-cta h2 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Montserrat',sans-serif;
     font-size: var(--fs-h2);
     font-weight: 800;
     letter-spacing: -2px;
     margin-bottom: 35px;
+    line-height: 1;
     color: #fff;
 }
 
@@ -1881,9 +1882,9 @@ footer {
         margin-right: 0;
     }
 
-    /* Mission CTA Mobile */
-    .mission-cta .btn-primary {
-        padding: 10px 30px;
+
+    .btn-primary{
+        padding: 10px 15px;
     }
 
     /* Waitlist Page Mobile */
@@ -1921,5 +1922,14 @@ footer {
     .team-grid {
         grid-template-columns: 1fr;
         gap: 30px;
+    }
+
+    /* Cursor */
+    .cursor-dot{
+        display: none;
+    }
+
+    .cursor-outline{
+        display: none;
     }
 }
